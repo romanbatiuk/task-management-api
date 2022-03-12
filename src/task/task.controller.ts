@@ -30,7 +30,7 @@ export class TaskController {
 	@Patch(':id/status')
 	async updateTaskStatus(
 		@Param('id') id: string,
-		@Body('status') { status }: UpdateTaskStatusDto,
+		@Body() { status }: UpdateTaskStatusDto,
 	): Promise<TaskEntity> {
 		return this.taskService.updateTaskStatus(id, status);
 	}

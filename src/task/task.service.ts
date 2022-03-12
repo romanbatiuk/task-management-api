@@ -28,6 +28,8 @@ export class TaskService {
 
 	async updateTaskStatus(id: string, status: TaskStatus): Promise<TaskEntity> {
 		const task = await this.getTaskById(id);
+		console.log(task);
+
 		task.status = status;
 		await this.taskRepository.save(task);
 		return task;
