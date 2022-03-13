@@ -17,11 +17,11 @@ import { TaskEntity } from './task.entity';
 import { TaskService } from './task.service';
 
 @Controller('tasks')
+@UseGuards(AuthGuard())
 export class TaskController {
 	constructor(private readonly taskService: TaskService) {}
 
 	@Get()
-	@UseGuards(AuthGuard())
 	async getTasks(@Query() filterDto: GetTasksFilterDto): Promise<TaskEntity[]> {
 		if (Object.keys(filterDto).length) {
 			return this.taskService.getTasks(filterDto);
